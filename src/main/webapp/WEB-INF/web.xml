@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <servlet-class>ru.itpark.servlet.IndexServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern/>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>context-param</param-name>
+        <param-value>context-value</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>parametrized</servlet-name>
+        <servlet-class>ru.itpark.servlet.ParameterizedServlet</servlet-class>
+        <!-- <load-on-startup></load-on-startup> -->
+
+        <init-param>
+            <param-name>init-param</param-name>
+            <param-value>init-value</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>parametrized</servlet-name>
+        <url-pattern>/parametrized</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>logger</filter-name>
+        <filter-class>ru.itpark.filter.LoggerFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>logger</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+<!--    /images-->
+    <servlet>
+        <servlet-name>images</servlet-name>
+        <servlet-class>ru.itpark.servlet.ImageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>images</servlet-name>
+        <url-pattern>/images/*</url-pattern>
+    </servlet-mapping>
+
+<!--    /create-->
+    <servlet>
+        <servlet-name>create</servlet-name>
+        <servlet-class>ru.itpark.servlet.CreateServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+
+        <multipart-config>
+            <location>/Users/aygulmardanova/IdeaProjects/SPRING/autosalon/upload</location>
+        </multipart-config>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>create</servlet-name>
+        <url-pattern>/create/*</url-pattern>
+    </servlet-mapping>
+
+<!--    /update-->
+    <servlet>
+        <servlet-name>update</servlet-name>
+        <servlet-class>ru.itpark.servlet.UpdateServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+
+        <multipart-config>
+            <location>/Users/aygulmardanova/IdeaProjects/SPRING/autosalon/upload</location>
+        </multipart-config>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>update</servlet-name>
+        <url-pattern>/update/*</url-pattern>
+    </servlet-mapping>
+
+<!--    /delete-->
+    <servlet-mapping>
+        <servlet-name>delete</servlet-name>
+        <url-pattern>/delete/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>delete</servlet-name>
+        <servlet-class>ru.itpark.servlet.DeleteServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+<!--    /csv/[download||upload]-->
+    <servlet-mapping>
+        <servlet-name>csv</servlet-name>
+        <url-pattern>/csv/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>csv</servlet-name>
+        <servlet-class>ru.itpark.servlet.CsvServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+
+        <multipart-config>
+            <location>/Users/aygulmardanova/IdeaProjects/SPRING/autosalon/upload</location>
+        </multipart-config>
+    </servlet>
+
+<!--    /catalog/* - all others-->
+    <servlet-mapping>
+        <servlet-name>catalog</servlet-name>
+        <url-pattern>/catalog/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>catalog</servlet-name>
+        <servlet-class>ru.itpark.servlet.CatalogServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+
+        <multipart-config>
+            <location>/Users/aygulmardanova/IdeaProjects/SPRING/autosalon/upload</location>
+        </multipart-config>
+    </servlet>
+
+</web-app>
